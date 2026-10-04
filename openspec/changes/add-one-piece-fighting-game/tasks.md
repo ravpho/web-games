@@ -65,11 +65,11 @@
 
 ## 10. Roster-wide rules and gags
 
-- [ ] 10.1 Verify the roster-wide properties with unit tests across all four fighters: equal max health, walk speed (Sanji fastest, Zoro slowest), chain damage (Zoro highest), Nami's chain reach shortest, Pistol reach beyond every chain, and every fighter having every move type (fighter-roster "Four playable fighters", "Shared move set structure", "Distinct play styles")
-- [ ] 10.2 Implement rubber versus lightning (Nami's lightning does 70% damage to Luffy, with a `rubber` event, boing wobble and "RUBBER!" pop-up); verify with a unit test comparing damage to Luffy and to Sanji, and a screenshot of the reaction
-- [ ] 10.3 Implement Sanji's heart-eyes intro and apologetic-bow victory when facing Nami, with no effect on gameplay; verify with a unit test that the match state matches a Sanji-vs-Zoro control apart from the cosmetic flags, and screenshots of both moments
-- [ ] 10.4 Implement mirror matches with the alternate color set for the opponent; verify with a screenshot of Luffy vs Luffy showing different colors (fighter-roster "Mirror matches")
-- [ ] 10.5 Add CPU style profiles for Zoro, Sanji and Nami; verify with seeded unit tests that a computer Nami mostly stays at range and uses specials when the player is far away, and that a computer Sanji closes in (cpu-opponent "Character-style behavior")
+- [x] 10.1 Verify the roster-wide properties with unit tests across all four fighters: equal max health, walk speed (Sanji fastest, Zoro slowest), chain damage (Zoro highest), Nami's chain reach shortest, Pistol reach beyond every chain, and every fighter having every move type (fighter-roster "Four playable fighters", "Shared move set structure", "Distinct play styles")
+- [x] 10.2 Implement rubber versus lightning (Nami's lightning does 70% damage to Luffy, with a `rubber` event, boing wobble and "RUBBER!" pop-up); verify with a unit test comparing damage to Luffy and to Sanji, and a screenshot of the reaction
+- [x] 10.3 Implement Sanji's heart-eyes intro and apologetic-bow victory when facing Nami, with no effect on gameplay; verify with a unit test that the match state matches a Sanji-vs-Zoro control apart from the cosmetic flags, and screenshots of both moments
+- [x] 10.4 Implement mirror matches with the alternate color set for the opponent; verify with a screenshot of Luffy vs Luffy showing different colors (fighter-roster "Mirror matches")
+- [x] 10.5 Add CPU style profiles for Zoro, Sanji and Nami; verify with seeded unit tests that a computer Nami mostly stays at range and uses specials when the player is far away, and that a computer Sanji closes in (cpu-opponent "Character-style behavior")
 
 ## 11. Sound
 
