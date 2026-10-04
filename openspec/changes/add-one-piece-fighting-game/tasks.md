@@ -56,12 +56,12 @@
 
 ## 9. Zoro, Sanji and Nami
 
-- [ ] 9.1 Add `fighters/zoro.js` (sword chain, 36 Pound Phoenix projectile, Oni Giri passing through with knockdown, Asura multi-hit knockdown super, style profile); verify with unit tests for fighter-roster "Zoro's moves"
-- [ ] 9.2 Draw Zoro (green hair, three swords, green sash) with all poses; verify with Playwright screenshots of each pose and move
-- [ ] 9.3 Add `fighters/sanji.js` (kick-only chain, Party Table Kick Course hitting both sides, Mouton Shot lunge with knockdown, Diable Jambe multi-hit knockdown super, style profile); verify with unit tests for fighter-roster "Sanji's moves"
-- [ ] 9.4 Draw Sanji (blond hair over one eye, curly eyebrow, black suit, hands in pockets, flaming leg during Diable Jambe) with all poses; verify with Playwright screenshots of each pose and move
-- [ ] 9.5 Add `fighters/nami.js` (staff chain with the shortest reach, Thunderbolt Tempo cloud marking a spot then delayed lightning, Cyclone Tempo big push, Thunder Lance Tempo full-stage super, keep-away style profile); verify with unit tests for fighter-roster "Nami's moves"
-- [ ] 9.6 Draw Nami (orange hair, Clima-Tact staff, cloud and lightning effects) with all poses; verify with Playwright screenshots of each pose and move
+- [x] 9.1 Add `fighters/zoro.js` (sword chain, 36 Pound Phoenix projectile, Oni Giri passing through with knockdown, Asura multi-hit knockdown super, style profile); verify with unit tests for fighter-roster "Zoro's moves"
+- [x] 9.2 Draw Zoro (green hair, three swords, green sash) with all poses; verify with Playwright screenshots of each pose and move
+- [x] 9.3 Add `fighters/sanji.js` (kick-only chain, Party Table Kick Course hitting both sides, Mouton Shot lunge with knockdown, Diable Jambe multi-hit knockdown super, style profile); verify with unit tests for fighter-roster "Sanji's moves"
+- [x] 9.4 Draw Sanji (blond hair over one eye, curly eyebrow, black suit, hands in pockets, flaming leg during Diable Jambe) with all poses; verify with Playwright screenshots of each pose and move
+- [x] 9.5 Add `fighters/nami.js` (staff chain with the shortest reach, Thunderbolt Tempo cloud marking a spot then delayed lightning, Cyclone Tempo big push, Thunder Lance Tempo full-stage super, keep-away style profile); verify with unit tests for fighter-roster "Nami's moves"
+- [x] 9.6 Draw Nami (orange hair, Clima-Tact staff, cloud and lightning effects) with all poses; verify with Playwright screenshots of each pose and move
 
 ## 10. Roster-wide rules and gags
 

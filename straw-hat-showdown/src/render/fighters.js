@@ -56,9 +56,9 @@ export function drawFighter(ctx, f, opponentId) {
   ctx.translate(f.x, GROUND_Y - f.y);
   ctx.scale(f.facing, 1);
   if (p.rot) {
-    ctx.translate(0, -8);
+    ctx.translate(0, -p.pivot);
     ctx.rotate((p.rot * Math.PI) / 180);
-    ctx.translate(0, 8);
+    ctx.translate(0, p.pivot);
   }
   if (f.wobble > 0) {
     const w = Math.sin(f.wobble * 0.9) * (f.wobble / 40);

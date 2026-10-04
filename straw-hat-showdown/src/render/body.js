@@ -10,7 +10,7 @@ function foot(ctx, at, color) {
   ellipse(ctx, at.x + 4, at.y - 3, 9, 5, 0, color);
 }
 
-function arm(ctx, shoulder, elbow, handAt, look, c, p, front) {
+export function arm(ctx, shoulder, elbow, handAt, look, c, p, front) {
   const w = look.armWidth ?? 9;
   const thick = front ? Math.max(1, p.fist * 0.6) : 1;
   segment(ctx, shoulder, elbow, w * thick, c.upperArm ?? c.skin);

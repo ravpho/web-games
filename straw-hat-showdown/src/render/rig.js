@@ -11,12 +11,13 @@
 //   fth, fsh   front thigh, shin                bth, bsh  back leg
 //   fstretch, bstretch  forearm length scale (Luffy)    fist  fist size scale
 //   prop       a free angle used by props (swords, staff)
+//   pivot      height above the feet that `rot` turns around
 
 export const BASE_POSE = Object.freeze({
   bx: 0, by: 0, rot: 0, lean: 4, head: 0,
   fua: 20, ffa: 50, bua: -10, bfa: 50,
   fth: 12, fsh: -8, bth: -12, bsh: -8,
-  fstretch: 1, bstretch: 1, fist: 1, prop: 0,
+  fstretch: 1, bstretch: 1, fist: 1, prop: 0, pivot: 8,
 });
 
 const DEG = Math.PI / 180;
