@@ -106,7 +106,7 @@ function trySuper(state, f, now) {
   const move = beginMove(state, f, 'super');
   state.freeze = Math.max(state.freeze, state.superFreezeFrames);
   state.freezeKind = 'super';
-  state.events.push({ type: 'superStart', side: f.side, fighter: f.id, name: move.name });
+  state.events.push({ type: 'superStart', side: f.side, fighter: f.id, name: move.name, subtitle: move.subtitle ?? null });
   return true;
 }
 

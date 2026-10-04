@@ -29,11 +29,11 @@
 
 ## 5. Rendering
 
-- [ ] 5.1 Implement `render/rig.js`: skeleton segments with angle and length scale, keyframed poses tied to move frames, mirroring for facing, and an alternate color set; verify with a unit test that pose interpolation and length scale give the expected joint positions
-- [ ] 5.2 Draw Luffy (`render/looks/luffy.js`) in chibi style with straw hat and red vest, with poses for idle, walk, jump, guard, hit, knockdown, getup, victory and every move, and Gum-Gum Pistol visibly stretching out and snapping back; verify with Playwright screenshots of each pose and of the Pistol at full reach
-- [ ] 5.3 Draw the Going Merry deck stage with sea and sky (`render/stage.js`); verify with a Playwright screenshot of a fight in progress
-- [ ] 5.4 Draw the fight information (`render/hud.js`): names and health bars with the player on the left, timer, round-win markers, and super meters that glow when full; verify with screenshots after a scripted hit, a round win and a full meter (fight-presentation "Fight information on screen" and "Full super meter stands out")
-- [ ] 5.5 Implement effects from core events (`render/fx.js`): hit and guard sparks, hit-stop, screen shake on heavy hits and knockdowns, hit counter, move-name banners and the super flash; verify with screenshots of a guarded hit, a chain ending in a knockdown, a 3+ hit counter and a super start (fight-presentation "Hit effects", "Hit counter", "Move-name banners", "Super move flash")
+- [x] 5.1 Implement `render/rig.js`: skeleton segments with angle and length scale, keyframed poses tied to move frames, mirroring for facing, and an alternate color set; verify with a unit test that pose interpolation and length scale give the expected joint positions
+- [x] 5.2 Draw Luffy (`render/looks/luffy.js`) in chibi style with straw hat and red vest, with poses for idle, walk, jump, guard, hit, knockdown, getup, victory and every move, and Gum-Gum Pistol visibly stretching out and snapping back; verify with Playwright screenshots of each pose and of the Pistol at full reach
+- [x] 5.3 Draw the Going Merry deck stage with sea and sky (`render/stage.js`); verify with a Playwright screenshot of a fight in progress
+- [x] 5.4 Draw the fight information (`render/hud.js`): names and health bars with the player on the left, timer, round-win markers, and super meters that glow when full; verify with screenshots after a scripted hit, a round win and a full meter (fight-presentation "Fight information on screen" and "Full super meter stands out")
+- [x] 5.5 Implement effects from core events (`render/fx.js`): hit and guard sparks, hit-stop, screen shake on heavy hits and knockdowns, hit counter, move-name banners and the super flash; verify with screenshots of a guarded hit, a chain ending in a knockdown, a 3+ hit counter and a super start (fight-presentation "Hit effects", "Hit counter", "Move-name banners", "Super move flash")
 
 ## 6. Touch controls
 
