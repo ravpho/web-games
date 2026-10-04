@@ -1,6 +1,8 @@
 // Fits the 16:9 game view into the screen, inside the safe area, and sizes the canvas
-// backing store for the device pixel ratio.
+// backing stores for the device pixel ratio (capped, and lowered on slow devices).
 import { SCREEN_W, SCREEN_H, DPR_CAP } from './config.js';
+
+let pixelRatioCap = DPR_CAP;
 
 function insets() {
   const s = getComputedStyle(document.documentElement);
@@ -23,7 +25,15 @@ export function computeLayout(viewW, viewH, inset) {
   };
 }
 
-export function applyLayout(stage, canvas) {
+// Lowers the canvas resolution one step (2 -> 1.5 -> 1). Returns false when already lowest.
+export function lowerPixelRatioCap() {
+  const current = Math.min(window.devicePixelRatio || 1, pixelRatioCap);
+  if (current <= 1) return false;
+  pixelRatioCap = current > 1.5 ? 1.5 : 1;
+  return true;
+}
+
+export function applyLayout(stage, canvases) {
   const view = window.visualViewport;
   const viewW = view ? view.width : window.innerWidth;
   const viewH = view ? view.height : window.innerHeight;
@@ -35,12 +45,14 @@ export function applyLayout(stage, canvas) {
     height: `${box.height}px`,
   });
   document.documentElement.style.setProperty('--u', `${box.scale}px`);
-  const dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+  const dpr = Math.min(window.devicePixelRatio || 1, pixelRatioCap);
   const bw = Math.round(box.width * dpr);
   const bh = Math.round(box.height * dpr);
-  if (canvas.width !== bw || canvas.height !== bh) {
-    canvas.width = bw;
-    canvas.height = bh;
+  for (const canvas of canvases) {
+    if (canvas.width !== bw || canvas.height !== bh) {
+      canvas.width = bw;
+      canvas.height = bh;
+    }
   }
   return { ...box, pixelScale: bw / SCREEN_W };
 }

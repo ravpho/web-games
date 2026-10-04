@@ -1,7 +1,7 @@
 // Visual effects driven by match events: sparks, screen shake, hit counters, move-name banners,
 // pop-ups, the super flash and round announcements.
 import { SCREEN_W, SCREEN_H, GROUND_Y, SUPER_FREEZE_FRAMES, FIGHT_CALL_FRAME } from '../config.js';
-import { OUTLINE } from './rig.js';
+import { drawText } from './text.js';
 
 export function createFx() {
   return { particles: [], rings: [], banners: [], popups: [], combo: [null, null], shake: 0, superFlash: null, seed: 1 };
@@ -123,14 +123,7 @@ export function drawWorldFx(ctx, fx) {
 }
 
 export function outlinedText(ctx, text, x, y, size, fill, align = 'center', weight = 900) {
-  ctx.font = `${weight} ${size}px system-ui, sans-serif`;
-  ctx.textAlign = align;
-  ctx.lineJoin = 'round';
-  ctx.lineWidth = Math.max(4, size / 6);
-  ctx.strokeStyle = OUTLINE;
-  ctx.strokeText(text, x, y);
-  ctx.fillStyle = fill;
-  ctx.fillText(text, x, y);
+  drawText(ctx, text, x, y, size, fill, align, { weight });
 }
 
 export function drawScreenFx(ctx, fx) {
@@ -168,7 +161,7 @@ export function drawScreenFx(ctx, fx) {
     ctx.closePath();
     ctx.fill();
     ctx.lineWidth = 4;
-    ctx.strokeStyle = OUTLINE;
+    ctx.strokeStyle = '#1b1b1b';
     ctx.stroke();
     const x = s.side === 0 ? 60 + (1 - slide) * -300 : SCREEN_W - 60 + (1 - slide) * 300;
     if (s.subtitle) outlinedText(ctx, s.subtitle, x, y - 28, 22, '#ffc93c', s.side === 0 ? 'left' : 'right');
@@ -201,7 +194,6 @@ export function drawAnnouncement(ctx, state, playerSide = 0) {
   if (!a || state.phase === 'done') return; // the results screen takes over
   if (state.phase === 'roundEnd' && a.t > 100) return;
   const pop = Math.min(1, a.t / 8);
-  const size = 76 * (0.6 + 0.4 * pop);
   const fill = a.text === 'FIGHT!' || a.text === 'YOU WIN!' ? '#ffc93c' : a.text === 'K.O.!' || a.text === 'YOU LOSE!' ? '#ff5b4a' : '#ffffff';
-  outlinedText(ctx, a.text, SCREEN_W / 2, SCREEN_H / 2 - 10, size, fill);
+  drawText(ctx, a.text, SCREEN_W / 2, SCREEN_H / 2 - 10, 76, fill, 'center', { scale: 0.6 + 0.4 * pop });
 }

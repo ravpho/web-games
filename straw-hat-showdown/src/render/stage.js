@@ -1,5 +1,5 @@
-// The Going Merry's deck, with sea and sky. Static parts are drawn once into a cached layer;
-// waves and clouds move a little each frame.
+// The Going Merry's deck, with sea and sky. Static parts are drawn once into cached layers;
+// clouds and waves move a little each time the stage is repainted.
 import { SCREEN_W, SCREEN_H, GROUND_Y } from '../config.js';
 import { OUTLINE } from './rig.js';
 
@@ -160,6 +160,7 @@ function drawDeck(ctx) {
 function buildCache(scale) {
   const back = makeLayer(scale);
   drawSky(back.ctx);
+  drawSea(back.ctx);
   const front = makeLayer(scale);
   drawMast(front.ctx);
   drawTangerineTree(front.ctx, 300);
@@ -196,12 +197,39 @@ function drawWaves(ctx, frame) {
   }
 }
 
-// Draws the stage. `scale` is canvas pixels per logical pixel (cache is rebuilt when it changes).
-export function drawStage(ctx, frame, scale) {
-  if (!cache || cache.scale !== scale) cache = buildCache(scale);
+// Bands of the stage that move (clouds in the sky, waves on the sea); everything else is static.
+const ANIMATED_BANDS = [[0, 150], [HORIZON, 372]];
+
+function paintBand(ctx, frame, top, bottom) {
+  // Snap the strip to whole canvas pixels so no blended seam shows at its edges.
+  const ps = cache.scale;
+  const y0 = Math.floor(top * ps) / ps;
+  const y1 = Math.ceil(bottom * ps) / ps;
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(0, y0, SCREEN_W, y1 - y0);
+  ctx.clip();
   ctx.drawImage(cache.back, 0, 0, SCREEN_W, SCREEN_H);
   drawClouds(ctx, frame);
-  drawSea(ctx);
   drawWaves(ctx, frame);
   ctx.drawImage(cache.front, 0, 0, SCREEN_W, SCREEN_H);
+  ctx.restore();
+}
+
+export const ANIMATED_BAND_COUNT = ANIMATED_BANDS.length;
+
+// Draws the stage. `scale` is canvas pixels per logical pixel (cache is rebuilt when it changes).
+// band = null repaints everything; a band index repaints only that moving strip, which is much
+// cheaper, so callers can spread the animation over several frames.
+export function drawStage(ctx, frame, scale, band = null) {
+  if (!cache || cache.scale !== scale) {
+    cache = buildCache(scale);
+    band = null;
+  }
+  if (band === null) {
+    paintBand(ctx, frame, 0, SCREEN_H);
+    return;
+  }
+  const [top, bottom] = ANIMATED_BANDS[band];
+  paintBand(ctx, frame, top, bottom);
 }

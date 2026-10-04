@@ -176,6 +176,9 @@ Each fighter is a 2D skeleton of segments: hips, torso, head, upper and lower ar
 The menu screens (title, character select, difficulty, pause, results) and the touch controls are HTML elements layered over the canvas. The fight, its on-screen info and effects are drawn on the canvas.
 
 - **Logical resolution**: 960x540. The canvas backing store uses the device pixel ratio, capped at 2, and is letterboxed to keep the 16:9 shape.
+- **Two canvases** (added after the performance check in task 15.2): the stage is drawn on a background canvas and repainted only in the strips that move (clouds, then waves, on alternate repaints, 15 times a second). Fighters, projectiles, effects and fight information are drawn on a transparent foreground canvas every frame. Screen shake moves the background canvas with a CSS transform.
+- **Cached text**: outlined text (names, timer, banners, announcements) is drawn once into small offscreen canvases and reused.
+- **Adaptive resolution**: if frames average over 18.5 ms across 90 frames, the canvas resolution steps down (2x, then 1.5x, then 1x). At 1x the clouds and waves stop moving. Fast phones stay sharp and slow phones stay smooth.
 - **Controls** sit in a layer covering the full screen, not just the letterboxed game area, so the pad and buttons reach the real screen edges. On today's wide phones they mostly sit over the side bars rather than the action. The `env(safe-area-inset-*)` CSS values keep them clear of notches and the home indicator.
 - **Touch input** uses Pointer Events tracked per touch: the pad follows its own touch and each button follows the touch on it. This handles multi-touch on iOS and Android. Each fixed step samples an `InputState` (horizontal direction, up, buttons held, buttons newly pressed) for the player.
 - **Why**: HTML gives crisp text, easy tap targets and CSS press states for the menus and controls. The canvas keeps the fight in sync with the simulation.
@@ -283,7 +286,8 @@ All sound effects are made at runtime with the Web Audio API: oscillators and no
 - **[Service worker serving stale files]** → The cache version is stamped by CI from the commit SHA, old caches are deleted on activation, and the service worker is not registered on localhost.
 - **[GitHub Pages availability]** → Pages must be turned on with the "GitHub Actions" source. A private repo needs a paid plan, so the owner may need to make the repo public.
 - **[Intellectual property]** → No copied assets, a non-commercial fan game with an "unofficial" note on the title screen. If the rights holders object, the game can be renamed or unpublished.
-- **[Older or low-end phones]** → Device pixel ratio capped at 2, no canvas shadow blur, and a small number of particles. The 5-step cap keeps the game playable, though slower, on very slow devices.
+- **[Older or low-end phones]** → Device pixel ratio capped at 2 and lowered automatically when frames run slow, a static background layer, cached text, no canvas shadow blur, and few particles. Button press feedback uses only transform and opacity. The 5-step cap keeps the game playable, though slower, on very slow devices.
+- **[Performance measured in software rendering]** → The dev container's Chromium has no GPU, so the 4x-slowdown check is harsher than a real phone. There, a busy fight averages about 16.8 ms per frame, the same as an empty page in that browser. Emulated taps add about 0.5 ms even on a page that draws nothing, so frame-time checks are run without them. Real-device playtesting (task 15.3) is the final word.
 
 ## Migration Plan
 

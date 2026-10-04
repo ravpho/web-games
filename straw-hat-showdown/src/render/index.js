@@ -1,5 +1,5 @@
-// Draws one frame of a match: stage, fighters, projectiles, effects, fight information.
-import { drawStage } from './stage.js';
+// Draws one frame of a match on the foreground canvas: fighters, projectiles, effects and fight
+// information. The stage is drawn separately on the background canvas (see drawStage).
 import { drawFighter } from './fighters.js';
 import { drawProjectiles } from './projectiles.js';
 import { drawHud } from './hud.js';
@@ -15,12 +15,12 @@ function drawOrder(state, fx) {
   return [a, b];
 }
 
-export function renderMatch(ctx, state, fx, hud, scale, playerSide = 0) {
+// Returns the screen-shake offset so the background layer can be moved to match.
+export function renderMatch(ctx, state, fx, hud, playerSide = 0) {
   const shake = shakeOffset(fx, state.frame);
+  drawSuperDim(ctx, fx);
   ctx.save();
   ctx.translate(shake.x, shake.y);
-  drawStage(ctx, state.frame, scale);
-  drawSuperDim(ctx, fx);
   const [back, front] = drawOrder(state, fx);
   drawFighter(ctx, back, state.fighters[1 - back.side].id);
   drawFighter(ctx, front, state.fighters[1 - front.side].id);
@@ -30,4 +30,5 @@ export function renderMatch(ctx, state, fx, hud, scale, playerSide = 0) {
   drawHud(ctx, hud, state);
   drawScreenFx(ctx, fx);
   drawAnnouncement(ctx, state, playerSide);
+  return shake;
 }

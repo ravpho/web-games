@@ -3,6 +3,7 @@ import { SCREEN_W, MAX_HEALTH, METER_MAX, ROUNDS_TO_WIN } from '../config.js';
 import { timerSeconds } from '../core/match.js';
 import { getFighter } from '../core/registry.js';
 import { OUTLINE } from './rig.js';
+import { drawText } from './text.js';
 
 const BAR_W = 360;
 const BAR_H = 22;
@@ -58,25 +59,13 @@ function meter(ctx, x0, dir, value, frame) {
   }
   ctx.fillRect(dir === 1 ? x0 : x0 - w, y, w, 10);
   if (full) {
-    ctx.font = '900 15px system-ui, sans-serif';
-    ctx.textAlign = dir === 1 ? 'left' : 'right';
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = OUTLINE;
     const tx = dir === 1 ? x0 + METER_W + 8 : x0 - METER_W - 8;
-    ctx.strokeText('SUPER!', tx, y + 10);
-    ctx.fillStyle = '#fff27a';
-    ctx.fillText('SUPER!', tx, y + 10);
+    drawText(ctx, 'SUPER!', tx, y + 10, 15, '#fff27a', dir === 1 ? 'left' : 'right');
   }
 }
 
 function label(ctx, text, x, y, align) {
-  ctx.font = '900 18px system-ui, sans-serif';
-  ctx.textAlign = align;
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = OUTLINE;
-  ctx.strokeText(text, x, y);
-  ctx.fillStyle = '#ffffff';
-  ctx.fillText(text, x, y);
+  drawText(ctx, text, x, y, 18, '#ffffff', align);
 }
 
 function roundMarkers(ctx, x0, dir, wins) {
@@ -103,12 +92,7 @@ function timer(ctx, state) {
   ctx.strokeStyle = OUTLINE;
   ctx.stroke();
   const secs = timerSeconds(state);
-  ctx.font = '900 30px system-ui, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillStyle = secs <= 10 ? '#e8322b' : OUTLINE;
-  ctx.fillText(String(Math.max(0, secs)), x, y + 2);
-  ctx.textBaseline = 'alphabetic';
+  drawText(ctx, String(Math.max(0, secs)), x, y + 12, 30, secs <= 10 ? '#e8322b' : OUTLINE, 'center', { outline: false });
 }
 
 // Called once per simulation step so the red damage trail catches up at a steady speed.

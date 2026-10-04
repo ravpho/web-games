@@ -40,7 +40,9 @@ body {
   background: #000;
 }
 
-#game {
+#bg, #game {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -152,14 +154,14 @@ body {
   pointer-events: auto;
   touch-action: none;
   opacity: 0.78;
-  box-shadow: 0 4px 0 rgb(0 0 0 / 0.35);
-  transition: transform 60ms, box-shadow 60ms;
+  border-bottom-width: 8px;
+  transition: transform 60ms, opacity 60ms;
 }
 
+/* Press feedback uses only transform and opacity, which need no repainting. */
 .btn.down {
-  transform: translateY(4px) scale(0.94);
-  box-shadow: 0 0 0 rgb(0 0 0 / 0.35);
-  filter: brightness(1.2);
+  transform: translateY(3px) scale(0.92);
+  opacity: 1;
 }
 
 .btn-attack  { right: 0;     bottom: 0;     width: 84px; height: 84px; background: #ff6b5a; font-size: 13px; }
@@ -170,12 +172,22 @@ body {
 .btn-super.ready {
   background: #b36bff;
   opacity: 0.95;
-  animation: super-ready 0.8s ease-in-out infinite alternate;
+}
+
+/* Glow ring for a ready Super. Animates only opacity and scale, which needs no repainting. */
+.btn-super.ready::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 4px solid #fff27a;
+  animation: super-ready 0.8s ease-out infinite;
+  pointer-events: none;
 }
 
 @keyframes super-ready {
-  from { box-shadow: 0 4px 0 rgb(0 0 0 / 0.35), 0 0 0 0 rgb(255 242 122 / 0.9); }
-  to   { box-shadow: 0 4px 0 rgb(0 0 0 / 0.35), 0 0 0 10px rgb(255 242 122 / 0); }
+  from { opacity: 0.9; transform: scale(0.85); }
+  to   { opacity: 0; transform: scale(1.15); }
 }
 
 /* --- Screens (sizes are in game pixels via --u) ----------------------------------------- */
