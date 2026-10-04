@@ -42,8 +42,8 @@
 
 ## 7. Computer opponent
 
-- [ ] 7.1 Implement `core/cpu.js`: decisions from a delayed snapshot of the match, Easy/Normal/Hard settings from design D8, a style profile per fighter, super use when in range, and output as an `InputState`; verify with seeded unit tests that guard rate and reaction time rank Hard > Normal > Easy, that Hard still lets attacks through, and that the computer does nothing during intros or pauses (cpu-opponent "Difficulty changes reactions" and "Beatable on Hard")
-- [ ] 7.2 Verify that the computer has no advantage: a unit test checks that its moves produce exactly the same damage, speed and meter results as the same moves by the player (cpu-opponent "Same rules as the player")
+- [x] 7.1 Implement `core/cpu.js`: decisions from a delayed snapshot of the match, Easy/Normal/Hard settings from design D8, a style profile per fighter, super use when in range, and output as an `InputState`; verify with seeded unit tests that guard rate and reaction time rank Hard > Normal > Easy, that Hard still lets attacks through, and that the computer does nothing during intros or pauses (cpu-opponent "Difficulty changes reactions" and "Beatable on Hard")
+- [x] 7.2 Verify that the computer has no advantage: a unit test checks that its moves produce exactly the same damage, speed and meter results as the same moves by the player (cpu-opponent "Same rules as the player")
 
 ## 8. Screens and game flow
 

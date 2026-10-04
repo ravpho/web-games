@@ -53,3 +53,12 @@ export function motionAt(move, t) {
 export function passesThrough(move, t) {
   return Boolean(move.passThrough) && motionAt(move, t) !== 0;
 }
+
+// How far in front of the fighter's center a move can connect, including any forward travel.
+// Projectile moves count as long range.
+export function moveReach(move) {
+  if (move.projectile) return Infinity;
+  const travel = move.motion.reduce((sum, seg) => sum + Math.max(0, seg.vx) * (seg.to - seg.from), 0);
+  const box = move.hits.length ? Math.max(...move.hits.map((h) => h.box.x + h.box.w)) : 0;
+  return box + travel;
+}
