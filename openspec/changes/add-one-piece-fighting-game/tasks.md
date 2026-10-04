@@ -37,8 +37,8 @@
 
 ## 6. Touch controls
 
-- [ ] 6.1 Implement `input/touch.js` with Pointer Events: a floating movement pad in the left area, Attack, Special, Guard and Super buttons on the right (each at least 48 CSS px, clear of safe-area insets), press feedback, and a dimmed or highlighted Super state; it produces the player's `InputState` each step; verify with Playwright touch emulation for every scenario in touch-controls, including pad + Special together for the forward special and pad + Guard together
-- [ ] 6.2 Connect touch input to the match so Luffy vs a standing dummy is playable in the browser; verify by playing through walk, jump, the chain, both specials, guard and super with emulated touches and checking the resulting events
+- [x] 6.1 Implement `input/touch.js` with Pointer Events: a floating movement pad in the left area, Attack, Special, Guard and Super buttons on the right (each at least 48 CSS px, clear of safe-area insets), press feedback, and a dimmed or highlighted Super state; it produces the player's `InputState` each step; verify with Playwright touch emulation for every scenario in touch-controls, including pad + Special together for the forward special and pad + Guard together
+- [x] 6.2 Connect touch input to the match so Luffy vs a standing dummy is playable in the browser; verify by playing through walk, jump, the chain, both specials, guard and super with emulated touches and checking the resulting events
 
 ## 7. Computer opponent
 

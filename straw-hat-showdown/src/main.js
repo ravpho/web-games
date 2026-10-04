@@ -1,6 +1,8 @@
-import { SCREEN_W, SCREEN_H } from './config.js';
+import './fighters/index.js';
 import { applyLayout } from './layout.js';
-import { createLoop, tick } from './loop.js';
+import { createTouchControls } from './input/touch.js';
+import { createGame } from './game.js';
+import { drawStage } from './render/stage.js';
 
 const stage = document.getElementById('stage');
 const canvas = document.getElementById('game');
@@ -13,23 +15,17 @@ function relayout() {
 window.addEventListener('resize', relayout);
 window.visualViewport?.addEventListener('resize', relayout);
 
-let steps = 0;
-const loop = createLoop(() => steps++);
+const touch = createTouchControls(document.getElementById('controls'));
 
-function draw(now) {
-  tick(loop, now);
-  ctx.setTransform(layout.pixelScale, 0, 0, layout.pixelScale, 0, 0);
-  const sky = ctx.createLinearGradient(0, 0, 0, SCREEN_H);
-  sky.addColorStop(0, '#7ec8ff');
-  sky.addColorStop(1, '#d9f1ff');
-  ctx.fillStyle = sky;
-  ctx.fillRect(0, 0, SCREEN_W, SCREEN_H);
-  ctx.fillStyle = '#1b1b1b';
-  ctx.font = 'bold 48px system-ui, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('Straw Hat Showdown', SCREEN_W / 2, SCREEN_H / 2);
-  ctx.font = '20px system-ui, sans-serif';
-  ctx.fillText(`step ${steps}`, SCREEN_W / 2, SCREEN_H / 2 + 40);
-  requestAnimationFrame(draw);
-}
-requestAnimationFrame(draw);
+const game = createGame({
+  ctx,
+  touch,
+  getLayout: () => layout,
+  drawIdle: (c, frame, scale) => drawStage(c, frame, scale),
+});
+
+// Until the menu screens exist: Luffy against a standing dummy.
+touch.show(true);
+game.start({ p1: 'luffy', p2: 'luffy' });
+
+if (new URLSearchParams(location.search).has('test')) window.__game = game;
