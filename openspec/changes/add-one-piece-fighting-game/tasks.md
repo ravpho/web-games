@@ -9,9 +9,9 @@
 
 ## 2. Match core
 
-- [ ] 2.1 Implement `core` `step(state, p1Input, p2Input)` returning the new state plus an events list, and the fixed 60 Hz accumulator loop in `main.js` (at most 5 steps per animation frame); verify with unit tests that the same seed and inputs give identical states after 1000 steps, and that one step always means 1/60 s whatever the frame rate (spec: Same speed on every device)
-- [ ] 2.2 Implement `match.js`: best of three, 3600-frame round timer, freeze frames not counted, round intro and end lockout, KO, time-out decision, drawn and double-KO rounds replayed, health and positions reset each round; verify with unit tests for every scenario in fight-rules "Best of three rounds", "Round time limit", "Knockout ends the round", "Time-out decision", "Drawn rounds are replayed" and "No control outside of play"
-- [ ] 2.3 Implement `input-buffer.js`: turn the screen direction into forward/back from facing, and remember button presses for 8 frames; verify with unit tests that a press 1-8 frames before a fighter can act is performed, and that a press 9 or more frames early is dropped
+- [x] 2.1 Implement `core` `step(state, p1Input, p2Input)` returning the new state plus an events list, and the fixed 60 Hz accumulator loop in `main.js` (at most 5 steps per animation frame); verify with unit tests that the same seed and inputs give identical states after 1000 steps, and that one step always means 1/60 s whatever the frame rate (spec: Same speed on every device)
+- [x] 2.2 Implement `match.js`: best of three, 3600-frame round timer, freeze frames not counted, round intro and end lockout, KO, time-out decision, drawn and double-KO rounds replayed, health and positions reset each round; verify with unit tests for every scenario in fight-rules "Best of three rounds", "Round time limit", "Knockout ends the round", "Time-out decision", "Drawn rounds are replayed" and "No control outside of play"
+- [x] 2.3 Implement `input-buffer.js`: turn the screen direction into forward/back from facing, and remember button presses for 8 frames; verify with unit tests that a press 1-8 frames before a fighter can act is performed, and that a press 9 or more frames early is dropped
 
 ## 3. Fighter and combat core
 

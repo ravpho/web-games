@@ -1,5 +1,6 @@
 import { SCREEN_W, SCREEN_H } from './config.js';
 import { applyLayout } from './layout.js';
+import { createLoop, tick } from './loop.js';
 
 const stage = document.getElementById('stage');
 const canvas = document.getElementById('game');
@@ -12,7 +13,11 @@ function relayout() {
 window.addEventListener('resize', relayout);
 window.visualViewport?.addEventListener('resize', relayout);
 
-function draw() {
+let steps = 0;
+const loop = createLoop(() => steps++);
+
+function draw(now) {
+  tick(loop, now);
   ctx.setTransform(layout.pixelScale, 0, 0, layout.pixelScale, 0, 0);
   const sky = ctx.createLinearGradient(0, 0, 0, SCREEN_H);
   sky.addColorStop(0, '#7ec8ff');
@@ -23,6 +28,8 @@ function draw() {
   ctx.font = 'bold 48px system-ui, sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('Straw Hat Showdown', SCREEN_W / 2, SCREEN_H / 2);
+  ctx.font = '20px system-ui, sans-serif';
+  ctx.fillText(`step ${steps}`, SCREEN_W / 2, SCREEN_H / 2 + 40);
   requestAnimationFrame(draw);
 }
 requestAnimationFrame(draw);
