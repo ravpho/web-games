@@ -47,12 +47,12 @@
 
 ## 8. Screens and game flow
 
-- [ ] 8.1 Build the title screen (game name, unofficial fan game note, sound toggle, tap to start) and the character select screen (four portraits drawn by the rig, pick your fighter then the opponent, Back); verify with Playwright walking through game-flow "Title screen" and "Character select"
-- [ ] 8.2 Build the difficulty screen (Easy/Normal/Hard, Normal highlighted, Back) and start the match with the computer at that level; verify game-flow "Difficulty select" in Playwright
-- [ ] 8.3 Show round announcements (Round N / Final Round, Fight!, K.O.!, Time!, Draw), the victory pose with You Win!/You Lose!, and the results screen (Rematch, Change Fighters, Title); verify with Playwright through a scripted match for game-flow "Round announcements", "Match result" and "Results screen"
-- [ ] 8.4 Add the pause button and menu (Resume, sound toggle, Quit to Title), and auto-pause on `visibilitychange` and when the phone is turned upright; verify game-flow "Pause" and "Automatic pause" in Playwright, including that the timer does not move while paused
-- [ ] 8.5 Confirm nothing is saved between visits (no localStorage, cookies or IndexedDB use); verify by reloading after changing sound and difficulty and checking the defaults, and by searching the source for storage APIs
-- [ ] 8.6 Milestone check: play Luffy vs a computer Luffy from title to results in phone emulation on each difficulty; verify the full flow completes with no console errors
+- [x] 8.1 Build the title screen (game name, unofficial fan game note, sound toggle, tap to start) and the character select screen (four portraits drawn by the rig, pick your fighter then the opponent, Back); verify with Playwright walking through game-flow "Title screen" and "Character select"
+- [x] 8.2 Build the difficulty screen (Easy/Normal/Hard, Normal highlighted, Back) and start the match with the computer at that level; verify game-flow "Difficulty select" in Playwright
+- [x] 8.3 Show round announcements (Round N / Final Round, Fight!, K.O.!, Time!, Draw), the victory pose with You Win!/You Lose!, and the results screen (Rematch, Change Fighters, Title); verify with Playwright through a scripted match for game-flow "Round announcements", "Match result" and "Results screen"
+- [x] 8.4 Add the pause button and menu (Resume, sound toggle, Quit to Title), and auto-pause on `visibilitychange` and when the phone is turned upright; verify game-flow "Pause" and "Automatic pause" in Playwright, including that the timer does not move while paused
+- [x] 8.5 Confirm nothing is saved between visits (no localStorage, cookies or IndexedDB use); verify by reloading after changing sound and difficulty and checking the defaults, and by searching the source for storage APIs
+- [x] 8.6 Milestone check: play Luffy vs a computer Luffy from title to results in phone emulation on each difficulty; verify the full flow completes with no console errors
 
 ## 9. Zoro, Sanji and Nami
 

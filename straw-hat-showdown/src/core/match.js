@@ -234,6 +234,9 @@ function resolveHits(state) {
 }
 
 function endRound(state, winner, reason) {
+  for (const f of state.fighters) {
+    if (f.health <= 0 && f.state !== 'ko') setState(f, 'ko');
+  }
   state.roundResult = { winner, reason };
   if (winner !== null) state.wins[winner]++;
   state.phase = 'roundEnd';

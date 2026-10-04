@@ -198,7 +198,7 @@ export function announcementFor(state, playerSide = 0) {
 
 export function drawAnnouncement(ctx, state, playerSide = 0) {
   const a = announcementFor(state, playerSide);
-  if (!a) return;
+  if (!a || state.phase === 'done') return; // the results screen takes over
   if (state.phase === 'roundEnd' && a.t > 100) return;
   const pop = Math.min(1, a.t / 8);
   const size = 76 * (0.6 + 0.4 * pop);
