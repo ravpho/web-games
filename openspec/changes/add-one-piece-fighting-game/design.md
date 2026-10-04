@@ -185,7 +185,8 @@ The menu screens (title, character select, difficulty, pause, results) and the t
 The CPU produces the same `InputState` the touch layer does, so it can't break the rules (`cpu-opponent` "Same rules as the player").
 
 - **Delayed view**: it decides from a snapshot of the match that is `reactionFrames` old, which gives human-like lag.
-- **Decisions**: every few frames it picks an action, weighted by the fighter's style profile (preferred distance, aggression, projectile use) and the difficulty settings below. Its randomness uses the match's seeded RNG.
+- **Decisions**: every few frames it picks an action, weighted by the fighter's style profile (preferred distance, aggression, projectile use) and the difficulty settings below. Its randomness comes from its own seeded RNG, so a match with a computer opponent is still reproducible.
+- **Guarding in advance**: the fastest attacks land in 5 frames, sooner than any reaction delay, so a purely delayed computer could never guard them. When the opponent is within reach, it also sometimes raises its guard in advance, with a chance set by the level. Delayed reactions still decide guarding slow attacks and projectiles, and punishing long recovery.
 
 | | Easy | Normal | Hard |
 |---|---|---|---|
