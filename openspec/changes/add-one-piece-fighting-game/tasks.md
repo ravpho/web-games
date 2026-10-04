@@ -2,10 +2,10 @@
 
 ## 1. Scaffolding
 
-- [ ] 1.1 Create root `package.json` (`"type": "module"`, `"test": "node --test"`, no dependencies) and the `straw-hat-showdown/` folder layout from design D2; verify `npm test` runs cleanly and the folders exist
-- [ ] 1.2 Add the game's `index.html`, `style.css` and a `src/main.js` stub with the mobile page basics from D10 (`viewport-fit=cover`, `touch-action: none`, no text selection or long-press menu, no overscroll, fixed body) and a 960x540 canvas letterboxed at 16:9 (device pixel ratio capped at 2); verify with Playwright phone emulation (landscape 844x390 and 640x360) that the canvas is fully visible, undistorted and centered, and that double-tap and drag don't zoom or scroll the page
-- [ ] 1.3 Add `src/config.js` (global constants from D5) and `src/core/rng.js` (seeded RNG); verify with a unit test that the same seed gives the same sequence and different seeds differ
-- [ ] 1.4 Add the root games index `index.html` linking to `straw-hat-showdown/`, and a README section on running the game locally (`npx serve .`) and running tests; verify the link opens the game from a local server and the README commands work as written
+- [x] 1.1 Create root `package.json` (`"type": "module"`, `"test": "node --test"`, no dependencies) and the `straw-hat-showdown/` folder layout from design D2; verify `npm test` runs cleanly and the folders exist
+- [x] 1.2 Add the game's `index.html`, `style.css` and a `src/main.js` stub with the mobile page basics from D10 (`viewport-fit=cover`, `touch-action: none`, no text selection or long-press menu, no overscroll, fixed body) and a 960x540 canvas letterboxed at 16:9 (device pixel ratio capped at 2); verify with Playwright phone emulation (landscape 844x390 and 640x360) that the canvas is fully visible, undistorted and centered, and that double-tap and drag don't zoom or scroll the page
+- [x] 1.3 Add `src/config.js` (global constants from D5) and `src/core/rng.js` (seeded RNG); verify with a unit test that the same seed gives the same sequence and different seeds differ
+- [x] 1.4 Add the root games index `index.html` linking to `straw-hat-showdown/`, and a README section on running the game locally (`npx serve .`) and running tests; verify the link opens the game from a local server and the README commands work as written
 
 ## 2. Match core
 
