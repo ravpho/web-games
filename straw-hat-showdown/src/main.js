@@ -5,6 +5,7 @@ import { createGame } from './game.js';
 import { createApp } from './app.js';
 import { drawStage } from './render/stage.js';
 import { createSfx } from './audio/sfx.js';
+import { enterFullscreen, shouldShowHomeScreenHint } from './platform.js';
 
 const stage = document.getElementById('stage');
 const canvas = document.getElementById('game');
@@ -32,8 +33,10 @@ const game = createGame({
 });
 
 const platform = {
+  showHomeScreenHint: shouldShowHomeScreenHint(),
   onFirstTap() {
     sfx.unlock();
+    enterFullscreen();
   },
 };
 

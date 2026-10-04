@@ -78,9 +78,9 @@
 
 ## 12. Mobile web app shell
 
-- [ ] 12.1 Add the rotate prompt for upright phones and keep the controls and fight information clear of safe-area insets; verify in Playwright portrait and landscape emulation, and with a notch-sized safe-area inset, for mobile-web-app "Played sideways" and "Clear of notches and rounded corners"
-- [ ] 12.2 Request fullscreen and attempt the landscape orientation lock on the title tap (both allowed to fail), and show the "Add to Home Screen" hint only on iPhone Safari outside home-screen mode; verify in Playwright that Chromium enters fullscreen, and with an iPhone user agent that the hint is shown
-- [ ] 12.3 Add `tools/make-icons.mjs` (renders the straw-hat icon with the rig code via Playwright to 180, 192 and 512 px PNGs, plus a maskable version), `manifest.webmanifest` (fullscreen, landscape, icons) and the Apple meta tags; verify that Chromium reports no installability errors through the DevTools protocol `Page.getInstallabilityErrors`
+- [x] 12.1 Add the rotate prompt for upright phones and keep the controls and fight information clear of safe-area insets; verify in Playwright portrait and landscape emulation, and with a notch-sized safe-area inset, for mobile-web-app "Played sideways" and "Clear of notches and rounded corners"
+- [x] 12.2 Request fullscreen and attempt the landscape orientation lock on the title tap (both allowed to fail), and show the "Add to Home Screen" hint only on iPhone Safari outside home-screen mode; verify in Playwright that Chromium enters fullscreen, and with an iPhone user agent that the hint is shown
+- [x] 12.3 Add `tools/make-icons.mjs` (renders the straw-hat icon with the rig code via Playwright to 180, 192 and 512 px PNGs, plus a maskable version), `manifest.webmanifest` (fullscreen, landscape, icons) and the Apple meta tags; verify that Chromium reports no installability errors through the DevTools protocol `Page.getInstallabilityErrors`
 
 ## 13. Offline play and updates
 

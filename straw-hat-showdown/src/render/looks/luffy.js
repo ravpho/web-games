@@ -66,23 +66,38 @@ function drawHairFront(ctx, h, r, c) {
   ctx.moveTo(r * 0.27, r * 0.15);
   ctx.lineTo(r * 0.29, r * 0.3);
   ctx.stroke();
-  // straw hat: brim, crown and red band
-  ellipse(ctx, r * 0.05, -r * 0.62, r * 1.45, r * 0.32, -0.08, c.hat);
-  ctx.beginPath();
-  ctx.ellipse(r * 0.02, -r * 0.72, r * 0.85, r * 0.62, -0.08, Math.PI, 0);
-  ctx.closePath();
+  drawStrawHat(ctx, r, c);
+}
+
+// The straw hat, in head-local coordinates for a head of radius r. Also used for the app icon.
+export function drawStrawHat(ctx, r, c) {
+  ellipse(ctx, r * 0.05, -r * 0.62, r * 1.45, r * 0.32, -0.08, c.hat); // brim
+  const dome = () => {
+    ctx.beginPath();
+    ctx.ellipse(r * 0.02, -r * 0.66, r * 0.85, r * 0.66, -0.08, Math.PI, 0);
+    ctx.closePath();
+  };
+  dome();
   ctx.fillStyle = c.hat;
   ctx.fill();
+  // red band around the base of the crown
+  ctx.save();
+  dome();
+  ctx.clip();
+  ctx.translate(r * 0.02, -r * 0.66);
+  ctx.rotate(-0.08);
+  ctx.fillStyle = c.hatBand;
+  ctx.fillRect(-r, -r * 0.3, r * 2, r * 0.3);
+  ctx.strokeStyle = OUTLINE;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(-r, -r * 0.3);
+  ctx.lineTo(r, -r * 0.3);
+  ctx.stroke();
+  ctx.restore();
+  dome();
   ctx.lineWidth = 3;
   ctx.strokeStyle = OUTLINE;
-  ctx.stroke();
-  ctx.fillStyle = c.hatBand;
-  ctx.beginPath();
-  ctx.ellipse(r * 0.02, -r * 0.76, r * 0.85, r * 0.16, -0.08, Math.PI, 0);
-  ctx.lineTo(r * 0.86, -r * 0.7);
-  ctx.ellipse(r * 0.02, -r * 0.7, r * 0.85, r * 0.14, -0.08, 0, Math.PI, false);
-  ctx.closePath();
-  ctx.fill();
   ctx.stroke();
 }
 
