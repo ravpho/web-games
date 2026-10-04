@@ -7,7 +7,7 @@ import { renderMatch } from './render/index.js';
 import { createFx, fxStep } from './render/fx.js';
 import { createHud, hudStep } from './render/hud.js';
 
-// opts: ctx (canvas 2D), getLayout() -> { pixelScale }, touch, onEvents(events, state),
+// opts: ctx (canvas 2D), getLayout() -> { pixelScale }, touch, sound, onEvents(events, state),
 // onMatchDone(state), drawIdle(ctx, frame) for when no match is running.
 export function createGame(opts) {
   const { ctx, getLayout, touch } = opts;
@@ -25,6 +25,7 @@ export function createGame(opts) {
     step(state, [p1, p2]);
     fxStep(session.fx, state);
     hudStep(session.hud, state);
+    opts.sound?.playEvents(state.events, 0);
     opts.onEvents?.(state.events, state);
     if (state.phase === 'done' && !session.doneSent) {
       session.doneSent = true;

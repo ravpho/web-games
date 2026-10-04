@@ -73,8 +73,8 @@
 
 ## 11. Sound
 
-- [ ] 11.1 Implement `audio/sfx.js` with Web Audio synthesized sounds (swing, hit, guard, stretch, slash, fire, lightning, wind, super start, knockdown, KO, announcements, menu tap), a master volume control for mute, and audio started on the title-screen tap; verify with a unit test that every core event type maps to a defined sound, and in Playwright that the audio is running after the tap and silent when muted
-- [ ] 11.2 Connect sounds to core events and menu taps, and the sound toggles on the title and pause screens; verify in Playwright that hit and guard events trigger different sounds and that turning sound off stops all playback (fight-presentation "Sound effects", "Sound toggle")
+- [x] 11.1 Implement `audio/sfx.js` with Web Audio synthesized sounds (swing, hit, guard, stretch, slash, fire, lightning, wind, super start, knockdown, KO, announcements, menu tap), a master volume control for mute, and audio started on the title-screen tap; verify with a unit test that every core event type maps to a defined sound, and in Playwright that the audio is running after the tap and silent when muted
+- [x] 11.2 Connect sounds to core events and menu taps, and the sound toggles on the title and pause screens; verify in Playwright that hit and guard events trigger different sounds and that turning sound off stops all playback (fight-presentation "Sound effects", "Sound toggle")
 
 ## 12. Mobile web app shell
 

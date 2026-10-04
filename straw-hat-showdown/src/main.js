@@ -4,6 +4,7 @@ import { createTouchControls } from './input/touch.js';
 import { createGame } from './game.js';
 import { createApp } from './app.js';
 import { drawStage } from './render/stage.js';
+import { createSfx } from './audio/sfx.js';
 
 const stage = document.getElementById('stage');
 const canvas = document.getElementById('game');
@@ -16,18 +17,27 @@ function relayout() {
 window.addEventListener('resize', relayout);
 window.visualViewport?.addEventListener('resize', relayout);
 
+const testMode = new URLSearchParams(location.search).has('test');
 const touch = createTouchControls(document.getElementById('controls'));
+const sfx = createSfx({ log: testMode ? [] : null });
 let app = null;
 
 const game = createGame({
   ctx,
   touch,
+  sound: sfx,
   getLayout: () => layout,
   drawIdle: (c, frame, scale) => drawStage(c, frame, scale),
   onMatchDone: (state) => app.matchDone(state),
 });
 
-app = createApp({ ui: document.getElementById('ui'), game, touch });
+const platform = {
+  onFirstTap() {
+    sfx.unlock();
+  },
+};
+
+app = createApp({ ui: document.getElementById('ui'), game, touch, sound: sfx, platform });
 app.title();
 
 // Pause automatically when the game is hidden or the phone is turned upright.
@@ -39,4 +49,4 @@ portrait.addEventListener('change', (e) => {
   if (e.matches) app.pause();
 });
 
-if (new URLSearchParams(location.search).has('test')) window.__game = { game, app };
+if (testMode) window.__game = { game, app, sfx };
