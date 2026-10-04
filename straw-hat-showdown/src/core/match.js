@@ -180,12 +180,13 @@ function resolveHits(state) {
       if (attacker.move.hitsDone.includes(k) || !hitIsLive(hit, attacker.move.t)) continue;
       const box = worldBox(attacker, hit.box);
       if (!overlaps(box, body)) continue;
+      const live = attacker.move; // kept: a trade may interrupt the attacker before done() runs
       pending.push({
         attacker, defender, hit, moveType: move.type,
         source: { moveId: move.id, crossUp: move.crossUp, point: contactPoint(box, body) },
         done: () => {
-          attacker.move.hitsDone.push(k);
-          attacker.move.connected = true;
+          live.hitsDone.push(k);
+          live.connected = true;
         },
       });
       break; // at most one hit of a move lands per step

@@ -156,7 +156,8 @@ function attackControl(state, f, now) {
     if (trySuper(state, f, now)) return;
     if (trySpecial(state, f, now)) return;
   }
-  if (move.next && takePress(f, now, ['attack'])) {
+  // A press is only used once the next hit is not yet queued; otherwise it waits in the buffer.
+  if (move.next && !f.move.queued && takePress(f, now, ['attack'])) {
     if (isRecovering(move, f.move.t)) beginMove(state, f, move.next);
     else f.move.queued = true;
   }

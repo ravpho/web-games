@@ -15,13 +15,13 @@
 
 ## 3. Fighter and combat core
 
-- [ ] 3.1 Implement the `fighter.js` state machine (idle, walk, air, guard, guardstun, hitstun, knockdown, getup, ko, intro, victory) with automatic turning, stage edges and push-apart; verify with unit tests for fight-rules "Fighters face each other" and "Stage boundaries and spacing"
-- [ ] 3.2 Implement frame-data move execution (`moves.js`) and hit detection (`collision.js`): attack boxes against body boxes, each hit landing once, damage, hitstun, push and hit-stop events; verify with unit tests for fight-rules "Landing a hit", using a minimal test fighter
-- [ ] 3.3 Implement knockdowns (45 frames down, 20 frames getting up while invulnerable); verify with unit tests for fight-rules "Knockdowns"
-- [ ] 3.4 Implement guarding: guardstun, pushback, 20% chip damage on specials and supers with a floor of 1 health, and no guarding in the air or while stunned; verify with unit tests for fight-rules "Guarding" and "Chip damage"
-- [ ] 3.5 Implement attack chains (continue on press within the window, reset when idle, third hit knocks down), cancelling into special or super when a hit connects, one jumping attack per jump, and no specials in the air; verify with unit tests for fight-rules "Attack chain", "Special after a chain hit" and "Jumping"
-- [ ] 3.6 Implement `projectiles.js`: travel, hitting, leaving the stage, cancelling each other, and one per fighter at a time; verify with unit tests for fight-rules "Projectiles"
-- [ ] 3.7 Implement the super meter (gain = damage dealt, including chip; half of damage taken; capped at 1000; kept between rounds; reset each match) and super moves (need a full meter, empty it, can't be interrupted); verify with unit tests for fight-rules "Super meter" and "Using a super move"
+- [x] 3.1 Implement the `fighter.js` state machine (idle, walk, air, guard, guardstun, hitstun, knockdown, getup, ko, intro, victory) with automatic turning, stage edges and push-apart; verify with unit tests for fight-rules "Fighters face each other" and "Stage boundaries and spacing"
+- [x] 3.2 Implement frame-data move execution (`moves.js`) and hit detection (`collision.js`): attack boxes against body boxes, each hit landing once, damage, hitstun, push and hit-stop events; verify with unit tests for fight-rules "Landing a hit", using a minimal test fighter
+- [x] 3.3 Implement knockdowns (45 frames down, 20 frames getting up while invulnerable); verify with unit tests for fight-rules "Knockdowns"
+- [x] 3.4 Implement guarding: guardstun, pushback, 20% chip damage on specials and supers with a floor of 1 health, and no guarding in the air or while stunned; verify with unit tests for fight-rules "Guarding" and "Chip damage"
+- [x] 3.5 Implement attack chains (continue on press within the window, reset when idle, third hit knocks down), cancelling into special or super when a hit connects, one jumping attack per jump, and no specials in the air; verify with unit tests for fight-rules "Attack chain", "Special after a chain hit" and "Jumping"
+- [x] 3.6 Implement `projectiles.js`: travel, hitting, leaving the stage, cancelling each other, and one per fighter at a time; verify with unit tests for fight-rules "Projectiles"
+- [x] 3.7 Implement the super meter (gain = damage dealt, including chip; half of damage taken; capped at 1000; kept between rounds; reset each match) and super moves (need a full meter, empty it, can't be interrupted); verify with unit tests for fight-rules "Super meter" and "Using a super move"
 
 ## 4. Luffy (first playable fighter)
 
