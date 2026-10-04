@@ -25,7 +25,7 @@
 
 ## 4. Luffy (first playable fighter)
 
-- [ ] 4.1 Add `fighters/luffy.js`: stats, three-hit punch chain, jumping attack, Gum-Gum Pistol (about 300 px reach, long recovery), Gum-Gum Gatling (forward flurry of several hits), Gear Third Giant Pistol super (heavy damage, knockdown) and style profile; verify with unit tests for the Luffy scenarios in fighter-roster "Luffy's moves"
+- [x] 4.1 Add `fighters/luffy.js`: stats, three-hit punch chain, jumping attack, Gum-Gum Pistol (about 300 px reach, long recovery), Gum-Gum Gatling (forward flurry of several hits), Gear Third Giant Pistol super (heavy damage, knockdown) and style profile; verify with unit tests for the Luffy scenarios in fighter-roster "Luffy's moves"
 
 ## 5. Rendering
 

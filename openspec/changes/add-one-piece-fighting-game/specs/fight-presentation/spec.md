@@ -60,7 +60,7 @@ A landed hit SHALL show a hit spark where it connects and a very short freeze of
 When two or more hits land in a row without the opponent getting free, the game SHALL show a counter such as "3 HITS!" on the attacker's side.
 
 #### Scenario: Chain into special
-- **WHEN** a three-hit chain followed by a special lands without the opponent getting free
+- **WHEN** two chain hits followed by a multi-hit special land without the opponent getting free
 - **THEN** the counter shows the total number of hits
 
 ### Requirement: Move-name banners
