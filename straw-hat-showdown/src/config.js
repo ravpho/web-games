@@ -54,7 +54,7 @@ export const GETUP_FRAMES = 20;
 export const KNOCKDOWN_LAUNCH_VY = 7;
 
 // Gags.
-export const LIGHTNING_VS_RUBBER = 0.7;
+export const LIGHTNING_VS_RUBBER = 0.8;
 
 // Controls.
 export const INPUT_BUFFER_FRAMES = 8;

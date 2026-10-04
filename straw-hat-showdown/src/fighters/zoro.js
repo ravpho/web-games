@@ -3,24 +3,24 @@
 export default {
   id: 'zoro',
   name: 'Zoro',
-  walkSpeed: 2.8,
+  walkSpeed: 3.0,
   jumpVx: 3.6,
-  style: { idealDistance: 110, aggression: 0.6, keepAway: false, jumpIn: 0.05 },
+  style: { idealDistance: 110, keepAway: false, jumpIn: 0.05 },
   moves: {
     chain1: {
-      type: 'chain', startup: 7, active: 3, recovery: 11, next: 'chain2', sfx: 'slash',
-      motion: [{ from: 0, to: 7, vx: 1 }],
-      hits: [{ box: { x: 10, y: 40, w: 75, h: 50 }, damage: 55, hitstun: 19, push: 3 }],
+      type: 'chain', startup: 8, active: 3, recovery: 11, next: 'chain2', sfx: 'slash',
+      motion: [{ from: 0, to: 8, vx: 1 }],
+      hits: [{ box: { x: 10, y: 40, w: 75, h: 50 }, damage: 52, hitstun: 19, push: 3 }],
     },
     chain2: {
-      type: 'chain', startup: 8, active: 3, recovery: 13, next: 'chain3', sfx: 'slash',
-      motion: [{ from: 0, to: 8, vx: 1.2 }],
-      hits: [{ box: { x: 10, y: 30, w: 75, h: 60 }, damage: 60, hitstun: 20, push: 3 }],
+      type: 'chain', startup: 9, active: 3, recovery: 13, next: 'chain3', sfx: 'slash',
+      motion: [{ from: 0, to: 9, vx: 1.2 }],
+      hits: [{ box: { x: 10, y: 30, w: 75, h: 60 }, damage: 58, hitstun: 20, push: 3 }],
     },
     chain3: {
-      type: 'chain', startup: 11, active: 4, recovery: 20, sfx: 'slash',
-      motion: [{ from: 0, to: 11, vx: 1.2 }],
-      hits: [{ box: { x: 5, y: 20, w: 80, h: 80 }, damage: 95, hitstun: 26, push: 6, knockdown: true }],
+      type: 'chain', startup: 12, active: 4, recovery: 20, sfx: 'slash',
+      motion: [{ from: 0, to: 12, vx: 1.2 }],
+      hits: [{ box: { x: 5, y: 20, w: 80, h: 80 }, damage: 92, hitstun: 26, push: 6, knockdown: true }],
     },
     jumpAttack: {
       type: 'jump', startup: 5, active: 12, recovery: 0, sfx: 'slash',
@@ -34,11 +34,11 @@ export default {
     },
     // Oni Giri: a fast dash that slashes through to the opponent's far side.
     forwardSpecial: {
-      type: 'special', name: 'ONI GIRI!', startup: 6, active: 12, recovery: 22, sfx: 'dash',
+      type: 'special', name: 'ONI GIRI!', startup: 6, active: 12, recovery: 26, sfx: 'dash',
       motion: [{ from: 4, to: 18, vx: 14 }],
       passThrough: true,
       crossUp: true,
-      hits: [{ box: { x: -10, y: 20, w: 70, h: 80 }, damage: 90, hitstun: 24, push: 6, knockdown: true }],
+      hits: [{ box: { x: -10, y: 20, w: 70, h: 80 }, damage: 82, hitstun: 24, push: 6, knockdown: true }],
     },
     // Asura: a nine-sword illusion with several heavy slashes.
     super: {

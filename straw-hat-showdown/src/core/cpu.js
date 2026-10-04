@@ -103,7 +103,10 @@ function think(cpu, state) {
   const gap = dist - BODY_HALF_WIDTH; // distance from my center to the opponent's body edge
   const reach = reachesOf(def);
   const oppDef = getFighter(state.fighters[1 - cpu.side].id);
-  const oppThreat = reachesOf(oppDef).melee + BODY_HALF_WIDTH + 20;
+  const oppReach = reachesOf(oppDef);
+  const oppThreat = oppReach.melee + BODY_HALF_WIDTH + 20;
+  // How close the opponent must be to land a quick attack (chain or rushing special) on us.
+  const closeThreat = Math.min(200, Math.max(oppReach.chain, oppReach.forwardSpecial === Infinity ? 0 : oppReach.forwardSpecial)) + BODY_HALF_WIDTH + 10;
   const canAct = me.state === 'idle' || me.state === 'walk' || me.state === 'guard';
 
   // 1. Keep guarding while a guard decision lasts.
@@ -193,8 +196,17 @@ function think(cpu, state) {
   }
 
   if (style.keepAway) {
+    if (dist <= closeThreat) {
+      // Within the opponent's close reach, walking away just gets her hit: fight back,
+      // blow the opponent away with the forward special, or guard.
+      if (inMelee && r < lv.aggression * 0.4) return press({ attack: true });
+      if (r < 0.35 + lv.specialRate * 0.5) return press({ special: true, x: toward });
+      if (chance(cpu.rng, lv.guard + 0.2)) {
+        cpu.guardLeft = lv.guardHold;
+        return press({ guard: true });
+      }
+    }
     if (dist < style.idealDistance - 50) {
-      if (inMelee && r < lv.aggression * 0.5) return press({ attack: true });
       if (r < 0.15) return press({ up: true, x: -toward });
       cpu.plan = { input: { x: -toward }, left: randInt(cpu.rng, 6, 14) };
       return press(cpu.plan.input);

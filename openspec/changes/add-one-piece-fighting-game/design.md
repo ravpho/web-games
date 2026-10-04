@@ -130,21 +130,21 @@ pistol: {
 
 Boxes are relative to the fighter's feet and mirrored by facing. Each fighter has one body box for being hit (adjusted for jumping and knockdown) and one push box for spacing. Chain hits list which moves they can be cancelled into (`special`, `super`) when they connect.
 
-Starting tuning values (expected to change in playtesting; the specs only require the relative orderings):
+Tuning values after the balance pass in task 15.1 (still expected to change in playtesting; the specs only require the relative orderings):
 
 | | Luffy | Zoro | Sanji | Nami |
 |---|---|---|---|---|
 | Max health | 1000 | 1000 | 1000 | 1000 |
-| Walk speed (px/frame) | 3.4 | 2.8 | 4.2 | 3.2 |
-| Chain damage | 40 / 40 / 70 | 55 / 60 / 95 | 35 / 35 / 65 | 35 / 35 / 60 |
-| Chain reach (px) | 70 | 85 | 80 | 60 |
-| Neutral special | Pistol, 300 px reach | Phoenix projectile | Party Table, both sides | Thunderbolt, 40-frame delay |
+| Walk speed (px/frame) | 3.6 | 3.0 | 4.2 | 3.2 |
+| Chain damage | 43 / 43 / 74 | 52 / 58 / 92 | 40 / 40 / 70 | 35 / 35 / 65 |
+| Chain reach (px) | 72 | 85 | 74 | 64 |
+| Neutral special | Pistol, 300 px reach | Phoenix projectile | Party Table, both sides | Thunderbolt, 50-frame delay |
 | Forward special | Gatling, 5 hits | Oni Giri, passes through | Mouton Shot, lunge | Cyclone, big push |
 | Super damage | 260 | 280 (multi-hit) | 250 (multi-hit) | 240 |
 
 Global constants:
 - **Chip damage**: 20% of normal damage, and it never takes health below 1.
-- **Lightning against Luffy**: 70% damage.
+- **Lightning against Luffy**: 80% damage (raised from 70% in the balance pass, which found the gag made Luffy too strong against Nami).
 - **Input buffer**: 8 frames.
 - **Hit-stop**: 5 frames for normal hits and 9 frames for heavy hits.
 - **Knockdown**: 45 frames down, then 20 frames getting up while invulnerable.
@@ -185,7 +185,7 @@ The menu screens (title, character select, difficulty, pause, results) and the t
 The CPU produces the same `InputState` the touch layer does, so it can't break the rules (`cpu-opponent` "Same rules as the player").
 
 - **Delayed view**: it decides from a snapshot of the match that is `reactionFrames` old, which gives human-like lag.
-- **Decisions**: every few frames it picks an action, weighted by the fighter's style profile (preferred distance, aggression, projectile use) and the difficulty settings below. Its randomness comes from its own seeded RNG, so a match with a computer opponent is still reproducible.
+- **Decisions**: every few frames it picks an action, weighted by the fighter's style profile (preferred distance, whether to keep away or rush in, how often to jump in) and the difficulty settings below, which also set how aggressive it is. Its randomness comes from its own seeded RNG, so a match with a computer opponent is still reproducible.
 - **Guarding in advance**: the fastest attacks land in 5 frames, sooner than any reaction delay, so a purely delayed computer could never guard them. When the opponent is within reach, it also sometimes raises its guard in advance, with a chance set by the level. Delayed reactions still decide guarding slow attacks and projectiles, and punishing long recovery.
 
 | | Easy | Normal | Hard |
@@ -278,7 +278,7 @@ All sound effects are made at runtime with the Web Audio API: oscillators and no
 - **[Touch feel can't be fully judged in emulation]** → All timing and size constants live in `config.js` and the fighter modules. The owner playtests the deployed build on a real phone, and the tasks include a tuning pass.
 - **[iPhone-specific behavior is untested in the dev environment]** (no WebKit) → Use only documented, long-supported features (Pointer Events, Web Audio started from a tap, safe-area insets, standalone display mode). The real-device playtest includes an iPhone checklist when one is available.
 - **[Code-drawn art may look too simple]** → Chibi proportions, bold outlines and signature props carry recognizability. The shared rig keeps each extra pose cheap, so polish can continue after launch.
-- **[Balance across four fighters at once]** → The CPU-vs-CPU round-robin flags lopsided matchups, and the tuning numbers are all in one place per fighter. Gags only cut lightning damage to Luffy by 30%.
+- **[Balance across four fighters at once]** → The CPU-vs-CPU round-robin flags lopsided matchups, and the tuning numbers are all in one place per fighter. Gags only cut lightning damage to Luffy by 20%.
 - **[Larger first version (all four fighters)]** → Build order: engine and Luffy first, end to end, then Zoro, Sanji and Nami as data, poses and drawing on the same engine.
 - **[Service worker serving stale files]** → The cache version is stamped by CI from the commit SHA, old caches are deleted on activation, and the service worker is not registered on localhost.
 - **[GitHub Pages availability]** → Pages must be turned on with the "GitHub Actions" source. A private repo needs a paid plan, so the owner may need to make the repo public.

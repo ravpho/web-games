@@ -4,25 +4,25 @@
 export default {
   id: 'luffy',
   name: 'Luffy',
-  walkSpeed: 3.4,
+  walkSpeed: 3.6,
   jumpVx: 4,
   rubber: true, // lightning barely hurts him
-  style: { idealDistance: 95, aggression: 0.7, keepAway: false, jumpIn: 0.08 },
+  style: { idealDistance: 95, keepAway: false, jumpIn: 0.08 },
   moves: {
     chain1: {
       type: 'chain', startup: 5, active: 3, recovery: 10, next: 'chain2', sfx: 'swing',
       motion: [{ from: 0, to: 5, vx: 1 }],
-      hits: [{ box: { x: 10, y: 50, w: 60, h: 30 }, damage: 40, hitstun: 18, push: 3 }],
+      hits: [{ box: { x: 10, y: 50, w: 60, h: 30 }, damage: 43, hitstun: 18, push: 3 }],
     },
     chain2: {
       type: 'chain', startup: 6, active: 3, recovery: 12, next: 'chain3', sfx: 'swing',
       motion: [{ from: 0, to: 6, vx: 1.2 }],
-      hits: [{ box: { x: 10, y: 50, w: 62, h: 30 }, damage: 40, hitstun: 18, push: 3 }],
+      hits: [{ box: { x: 10, y: 50, w: 62, h: 30 }, damage: 43, hitstun: 18, push: 3 }],
     },
     chain3: {
       type: 'chain', startup: 9, active: 4, recovery: 18, sfx: 'stretch',
       motion: [{ from: 0, to: 9, vx: 1.2 }],
-      hits: [{ box: { x: 10, y: 30, w: 66, h: 60 }, damage: 70, hitstun: 24, push: 6, knockdown: true }],
+      hits: [{ box: { x: 10, y: 30, w: 66, h: 60 }, damage: 74, hitstun: 24, push: 6, knockdown: true }],
     },
     jumpAttack: {
       type: 'jump', startup: 4, active: 12, recovery: 0, sfx: 'swing',

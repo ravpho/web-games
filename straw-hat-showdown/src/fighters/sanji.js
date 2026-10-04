@@ -5,22 +5,22 @@ export default {
   name: 'Sanji',
   walkSpeed: 4.2,
   jumpVx: 4.6,
-  style: { idealDistance: 100, aggression: 0.85, keepAway: false, jumpIn: 0.12 },
+  style: { idealDistance: 100, keepAway: false, jumpIn: 0.08 },
   moves: {
     chain1: {
       type: 'chain', startup: 4, active: 3, recovery: 9, next: 'chain2', sfx: 'kick',
       motion: [{ from: 0, to: 4, vx: 1.2 }],
-      hits: [{ box: { x: 10, y: 15, w: 70, h: 40 }, damage: 35, hitstun: 17, push: 3 }],
+      hits: [{ box: { x: 10, y: 15, w: 64, h: 40 }, damage: 40, hitstun: 17, push: 3 }],
     },
     chain2: {
       type: 'chain', startup: 5, active: 3, recovery: 11, next: 'chain3', sfx: 'kick',
       motion: [{ from: 0, to: 5, vx: 1.4 }],
-      hits: [{ box: { x: 10, y: 45, w: 70, h: 40 }, damage: 35, hitstun: 17, push: 3 }],
+      hits: [{ box: { x: 10, y: 45, w: 64, h: 40 }, damage: 40, hitstun: 17, push: 3 }],
     },
     chain3: {
       type: 'chain', startup: 8, active: 4, recovery: 16, sfx: 'kick',
       motion: [{ from: 0, to: 8, vx: 1.4 }],
-      hits: [{ box: { x: 10, y: 55, w: 70, h: 55 }, damage: 65, hitstun: 24, push: 6, knockdown: true }],
+      hits: [{ box: { x: 10, y: 55, w: 64, h: 55 }, damage: 70, hitstun: 24, push: 6, knockdown: true }],
     },
     jumpAttack: {
       type: 'jump', startup: 4, active: 12, recovery: 0, sfx: 'kick',
@@ -37,9 +37,9 @@ export default {
     },
     // Mouton Shot: a lunging kick that covers distance.
     forwardSpecial: {
-      type: 'special', name: 'MOUTON SHOT!', startup: 9, active: 8, recovery: 18, sfx: 'kickHeavy',
-      motion: [{ from: 0, to: 12, vx: 9 }],
-      hits: [{ box: { x: 10, y: 30, w: 75, h: 60 }, damage: 85, hitstun: 24, push: 8, knockdown: true }],
+      type: 'special', name: 'MOUTON SHOT!', startup: 11, active: 8, recovery: 26, sfx: 'kickHeavy',
+      motion: [{ from: 0, to: 14, vx: 8 }],
+      hits: [{ box: { x: 10, y: 30, w: 75, h: 60 }, damage: 62, hitstun: 24, push: 8, knockdown: true }],
     },
     // Diable Jambe: his leg catches fire for a flaming kick barrage.
     super: {

@@ -4,6 +4,7 @@ import { ROSTER } from '../src/fighters/index.js';
 import { getFighter } from '../src/core/registry.js';
 import { createMatch, step } from '../src/core/match.js';
 import { createCpu } from '../src/core/cpu.js';
+import { NEUTRAL_INPUT } from '../src/core/input-buffer.js';
 import { soundsForEvent, SOUND_NAMES, SILENT_EVENTS } from '../src/audio/sfx.js';
 
 // Every event type the core emits, collected by playing computer-vs-computer matches.
@@ -19,6 +20,12 @@ function coreEventTypes() {
         for (const e of state.events) types.add(e.type);
       }
     }
+  }
+  // A scripted fighter that jumps and attacks, so movement events are always covered.
+  const scripted = createMatch({ p1: 'luffy', p2: 'nami', seed: 3 });
+  for (let i = 0; i < 400; i++) {
+    step(scripted, [{ x: 0, up: i % 50 === 0, guard: false, attack: i % 7 === 0, special: false, super: false }, NEUTRAL_INPUT]);
+    for (const e of scripted.events) types.add(e.type);
   }
   // Rounds that end on time or in a draw are rarer than knockouts; they are core events too.
   return [...new Set([...types, 'time', 'draw'])];
