@@ -84,12 +84,12 @@
 
 ## 13. Offline play and updates
 
-- [ ] 13.1 Implement `sw.js`: save the listed game files under a versioned cache, switch to the new version immediately on install, delete old caches on activation, and serve the game's own requests from the cache first; register it outside localhost, or on localhost with `?sw=1` for testing; verify in Playwright that after one online load the game reloads and plays a match with the network offline (mobile-web-app "Works offline")
-- [ ] 13.2 Verify updates: serve version A, load it, switch the server to version B, and open the game twice; check that the second opening runs version B (mobile-web-app "Picks up new versions")
+- [x] 13.1 Implement `sw.js`: save the listed game files under a versioned cache, switch to the new version immediately on install, delete old caches on activation, and serve the game's own requests from the cache first; register it outside localhost, or on localhost with `?sw=1` for testing; verify in Playwright that after one online load the game reloads and plays a match with the network offline (mobile-web-app "Works offline")
+- [x] 13.2 Verify updates: serve version A, load it, switch the server to version B, and open the game twice; check that the second opening runs version B (mobile-web-app "Picks up new versions")
 
 ## 14. Publishing
 
-- [ ] 14.1 Add `tools/build-site.mjs`, which assembles `_site/` (root index plus the game without `tests/`) and writes the cache version and file list into `sw.js`; verify by running it locally and checking that `_site/` contents match and that `sw.js` lists exactly the game's files
+- [x] 14.1 Add `tools/build-site.mjs`, which assembles `_site/` (root index plus the game without `tests/`) and writes the cache version and file list into `sw.js`; verify by running it locally and checking that `_site/` contents match and that `sw.js` lists exactly the game's files
 - [ ] 14.2 Add `.github/workflows/pages.yml` (on push to `main`: `npm test`, `node tools/build-site.mjs` with the commit SHA, upload-pages-artifact, deploy-pages); verify by reading the workflow against D11, then push to a branch and check the test job passes
 - [ ] 14.3 Document in the README how to play, run tests, build the site and deploy, including the one-time "Settings > Pages > Source: GitHub Actions" step and the private-repo note; verify the documented commands run as written
 

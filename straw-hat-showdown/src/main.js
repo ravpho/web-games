@@ -53,3 +53,10 @@ portrait.addEventListener('change', (e) => {
 });
 
 if (testMode) window.__game = { game, app, sfx };
+
+// Offline support. Not used on this computer's own address during development (fresh files
+// always), unless ?sw is in the address for testing.
+const localHost = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+if ('serviceWorker' in navigator && (!localHost || new URLSearchParams(location.search).has('sw'))) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
