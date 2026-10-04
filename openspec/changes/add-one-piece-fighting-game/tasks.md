@@ -90,8 +90,8 @@
 ## 14. Publishing
 
 - [x] 14.1 Add `tools/build-site.mjs`, which assembles `_site/` (root index plus the game without `tests/`) and writes the cache version and file list into `sw.js`; verify by running it locally and checking that `_site/` contents match and that `sw.js` lists exactly the game's files
-- [ ] 14.2 Add `.github/workflows/pages.yml` (on push to `main`: `npm test`, `node tools/build-site.mjs` with the commit SHA, upload-pages-artifact, deploy-pages); verify by reading the workflow against D11, then push to a branch and check the test job passes
-- [ ] 14.3 Document in the README how to play, run tests, build the site and deploy, including the one-time "Settings > Pages > Source: GitHub Actions" step and the private-repo note; verify the documented commands run as written
+- [x] 14.2 Add `.github/workflows/pages.yml` (on push to `main`: `npm test`, `node tools/build-site.mjs` with the commit SHA, upload-pages-artifact, deploy-pages); verify by reading the workflow against D11, then push to a branch and check the test job passes
+- [x] 14.3 Document in the README how to play, run tests, build the site and deploy, including the one-time "Settings > Pages > Source: GitHub Actions" step and the private-repo note; verify the documented commands run as written
 
 ## 15. Integration checks and tuning
 
